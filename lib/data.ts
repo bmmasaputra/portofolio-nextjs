@@ -43,6 +43,7 @@ export const siteConfig = {
   github: "https://github.com/alexrivera",
   linkedin: "https://linkedin.com/in/alexrivera",
   twitter: "https://twitter.com/alexrivera",
+  photo: "/photo.png",
 } as const;
 
 export const navItems: NavItem[] = [
