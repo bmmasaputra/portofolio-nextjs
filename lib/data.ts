@@ -39,10 +39,10 @@ export const siteConfig = {
   tagline: "I build systems that scale and interfaces that matter.",
   bio: "Full-stack engineer with 5+ years shipping production software. I care deeply about performance, developer experience, and the craft of writing code that other people can actually maintain.",
   location: "Remote — Open to opportunities",
-  email: "alex@example.dev",
-  github: "https://github.com/alexrivera",
-  linkedin: "https://linkedin.com/in/alexrivera",
-  twitter: "https://twitter.com/alexrivera",
+  email: "bimagung2203@gmail.com",
+  github: "https://github.com/bmmasaputra",
+  linkedin: "https://linkedin.com/in/bima-saputra-462160247/",
+  twitter: "https://twitter.com/bimasaputra",
   photo: "/photo.png",
 } as const;
 
@@ -143,18 +143,18 @@ export const experiences: Experience[] = [
 export const skills: Skill[] = [
   {
     category: "Languages",
-    items: ["TypeScript", "Go", "Python", "Rust", "SQL"],
+    items: ["JavaScript", "TypeScript", "PHP", "Python", "Java", "C++"],
   },
   {
     category: "Frontend",
-    items: ["React", "Next.js", "Framer Motion", "Tailwind CSS", "WebGL"],
+    items: ["React", "Next.js", "Vite", "Framer Motion", "Tailwind CSS", "Filament"],
   },
   {
     category: "Backend",
-    items: ["Node.js", "FastAPI", "PostgreSQL", "Redis", "Kafka"],
+    items: ["Node.js", "Hono.js", "FastAPI", "Laravel", "Express.js", "Prisma", "SQL Databases"],
   },
   {
     category: "Infrastructure",
-    items: ["Docker", "Kubernetes", "AWS", "Terraform", "Grafana"],
+    items: ["Docker", "GCP", "AWS", "Terraform", "Grafana", "Vercel"],
   },
 ];
