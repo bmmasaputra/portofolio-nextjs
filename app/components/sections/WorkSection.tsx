@@ -10,6 +10,12 @@ import { ScrollTimeline } from "@/app/components/ui/ScrollTimeline";
 export function WorkSection() {
   const timelineRef = useRef<HTMLDivElement>(null);
 
+  // One ref per experience entry — passed to ScrollTimeline so the rAF loop
+  // can read each dot's position and fill it as the ball passes.
+  const dotRefs = useRef(
+    experiences.map(() => ({ current: null as HTMLDivElement | null })),
+  );
+
   return (
     <section
       id="work"
@@ -33,7 +39,10 @@ export function WorkSection() {
       <div ref={timelineRef} className="relative">
         {/* Scroll-driven line + lagging circle marker — centered horizontally */}
         <div className="hidden md:block">
-          <ScrollTimeline containerRef={timelineRef} />
+          <ScrollTimeline
+            containerRef={timelineRef}
+            dotRefs={dotRefs.current}
+          />
         </div>
 
         <ol className="space-y-16 md:space-y-20">
@@ -46,9 +55,16 @@ export function WorkSection() {
               threshold={0.1}
               className="relative"
             >
-              {/* Per-item marker on the centered spine */}
+              {/* Dot — ref wired so ScrollTimeline can fill it */}
               <div
+                ref={(el) => {
+                  dotRefs.current[index].current = el;
+                }}
                 className="absolute left-1/2 top-1.5 -translate-x-1/2 w-[7px] h-[7px] rounded-full border border-border-default bg-surface-base hidden md:block z-10"
+                style={{
+                  transition:
+                    "background-color 0.3s ease, border-color 0.3s ease",
+                }}
                 aria-hidden="true"
               />
 
