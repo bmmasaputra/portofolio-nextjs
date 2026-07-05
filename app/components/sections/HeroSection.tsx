@@ -172,7 +172,11 @@ function PhotoCard() {
         {/* Outer dashed ring */}
         <div
           className="absolute rounded-full border border-dashed border-border-subtle"
-          style={{ width: "110%", height: "110%", animation: "spin 30s linear infinite" }}
+          style={{
+            width: "110%",
+            height: "110%",
+            animation: "spin 30s linear infinite",
+          }}
         />
         {/* Inner solid ring */}
         <div
@@ -199,7 +203,7 @@ function PhotoCard() {
         ref={cardRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        className="relative w-64 h-80 md:w-72 md:h-96"
+        className="relative w-64 h-80 lg:w-72 md:h-96"
         style={{
           transition: "transform 0.15s ease-out",
           transformStyle: "preserve-3d",
@@ -226,7 +230,7 @@ function PhotoCard() {
             src={siteConfig.photo}
             alt={`Portrait of ${siteConfig.name}`}
             fill
-            sizes="(max-width: 768px) 256px, 288px"
+            sizes="(max-width: 821px) 100px, 288px"
             className="object-cover object-center grayscale hover:grayscale-0 transition-all duration-500"
             onError={(e) => {
               // Fallback: hide broken img, show placeholder
@@ -241,11 +245,22 @@ function PhotoCard() {
             style={{ zIndex: -1 }}
           >
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-              <circle cx="24" cy="18" r="8" stroke="currentColor" strokeWidth="1.5" />
-              <path d="M6 42c0-9.941 8.059-18 18-18s18 8.059 18 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              <circle
+                cx="24"
+                cy="18"
+                r="8"
+                stroke="currentColor"
+                strokeWidth="1.5"
+              />
+              <path
+                d="M6 42c0-9.941 8.059-18 18-18s18 8.059 18 18"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
             </svg>
             <span className="text-xs font-mono tracking-widest uppercase">
-              Add photo.jpg to /public
+              Photo Unavailable
             </span>
           </div>
 
@@ -293,7 +308,7 @@ export function HeroSection() {
 
       {/* Content */}
       <div className="relative z-20 max-w-6xl mx-auto w-full px-6 pt-24 pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-4 lg:gap-8 items-center">
 
           {/* ── Left: Text ── */}
           <div>
@@ -377,7 +392,7 @@ export function HeroSection() {
           </div>
 
           {/* ── Right: Photo ── */}
-          <div className="flex justify-center lg:justify-end">
+          <div className="justify-end hidden md:flex">
             <PhotoCard />
           </div>
         </div>

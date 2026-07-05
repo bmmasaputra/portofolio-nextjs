@@ -5,7 +5,6 @@ import {
   SiTypescript,
   SiPhp,
   SiPython,
-  SiOpenjdk,
   SiCplusplus,
   // Frontend
   SiReact,
@@ -29,7 +28,7 @@ import {
   SiVercel,
   SiFilament
 } from "react-icons/si";
-import { FaAws } from "react-icons/fa";
+import { FaAws, FaJava } from "react-icons/fa";
 import { TbBrandPhp } from "react-icons/tb";
 
 /**
@@ -42,7 +41,7 @@ export const skillIconMap: Record<string, IconType> = {
   TypeScript: SiTypescript,
   PHP: SiPhp,
   Python: SiPython,
-  Java: SiOpenjdk,
+  Java: FaJava,
   "C++": SiCplusplus,
 
   // Frontend

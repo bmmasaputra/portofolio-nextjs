@@ -19,10 +19,10 @@ function SkillIcon({ skill }: { skill: string }) {
   const Icon = skillIconMap[skill];
   return (
     <div className="group/icon flex flex-col items-center gap-2 px-2" title={skill}>
-      <span className="flex items-center justify-center w-9 h-9 text-text-muted group-hover/icon:text-text-primary transition-colors duration-300">
+      <span className="flex items-center justify-center w-9 h-9 text-text-primary group-hover/icon:text-text-primary transition-colors duration-300">
         {Icon ? <Icon size={22} /> : <Code2 size={22} />}
       </span>
-      <span className="text-[10px] font-mono text-text-muted group-hover/icon:text-text-secondary transition-colors duration-300 text-center leading-tight max-w-[72px]">
+      <span className="text-[10px] font-mono text-text-secondary group-hover/icon:text-text-primary transition-colors duration-300 text-center leading-tight max-w-[72px]">
         {skill}
       </span>
     </div>

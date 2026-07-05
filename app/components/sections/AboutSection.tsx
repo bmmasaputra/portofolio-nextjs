@@ -22,7 +22,7 @@ export function AboutSection() {
       className="py-section px-6 max-w-6xl mx-auto"
       aria-labelledby="about-heading"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-12 lg:gap-8 items-start">
+      <div className="grid grid-cols-1 xl:grid-cols-[60%_40%] gap-12 xl:gap-8 items-start">
         {/* ── Left: Bio ── */}
         <div>
           <Reveal variant="clip-left" duration={700}>
@@ -39,13 +39,18 @@ export function AboutSection() {
           </Reveal>
 
           <Reveal variant="fade-up" delay={180}>
-            <p className="text-text-secondary leading-relaxed mb-4">{siteConfig.bio}</p>
+            <p className="text-text-secondary leading-relaxed mb-4">
+              {siteConfig.bio}
+            </p>
           </Reveal>
 
           <Reveal variant="fade-up" delay={240}>
             <p className="text-text-secondary leading-relaxed mb-8">
-              When I&apos;m not shipping code, I write about distributed systems and developer tooling.
-              I believe in open source, clear documentation, and tests that actually catch bugs.
+              I'm currently seeking opportunities where I can contribute to
+              impactful products while continuing to grow as a software
+              engineer. Whether I'm building a polished frontend, designing
+              APIs, or improving developer workflows, I enjoy creating software
+              that delivers lasting value.
             </p>
           </Reveal>
 
@@ -59,16 +64,30 @@ export function AboutSection() {
 
         {/* ── Right: Skill columns — scrolls normally with the page ── */}
         <Reveal variant="fade" delay={150} threshold={0.05}>
-          <div className="grid grid-cols-4 gap-3">
-            {skills.map((skillGroup, i) => (
-              <MarqueeColumn
-                key={skillGroup.category}
-                items={skillGroup.items}
-                category={skillGroup.category}
-                direction={columnConfig[i].direction}
-                pixelsPerSecond={columnConfig[i].pixelsPerSecond}
-              />
-            ))}
+          <div className="relative">
+            {/* Blue inner glow — rises from the bottom inside the card */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-x-0 bottom-0 h-48 pointer-events-none animate-breathe"
+              style={{
+                background:
+                  "radial-gradient(ellipse 80% 100% at 50% 100%, rgba(113, 113, 122, .6) 0%, transparent 70%)",
+                filter: "blur(20px)",
+              }}
+            />
+
+            {/* Columns — separated by hairlines */}
+            <div className="relative grid grid-cols-4 divide-x divide-border-subtle">
+              {skills.map((skillGroup, i) => (
+                <MarqueeColumn
+                  key={skillGroup.category}
+                  items={skillGroup.items}
+                  category={skillGroup.category}
+                  direction={columnConfig[i].direction}
+                  pixelsPerSecond={columnConfig[i].pixelsPerSecond}
+                />
+              ))}
+            </div>
           </div>
         </Reveal>
       </div>

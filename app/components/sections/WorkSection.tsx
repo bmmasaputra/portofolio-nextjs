@@ -1,11 +1,15 @@
 "use client";
 
+import { useRef } from "react";
 import { experiences } from "@/lib/data";
 import { SectionLabel } from "@/app/components/ui/SectionLabel";
 import { TechBadge } from "@/app/components/ui/TechBadge";
 import { Reveal } from "@/app/components/ui/Reveal";
+import { ScrollTimeline } from "@/app/components/ui/ScrollTimeline";
 
 export function WorkSection() {
+  const timelineRef = useRef<HTMLDivElement>(null);
+
   return (
     <section
       id="work"
@@ -19,70 +23,69 @@ export function WorkSection() {
       <Reveal variant="fade-up" delay={100}>
         <h2
           id="work-heading"
-          className="text-display-md font-display font-black tracking-tighter text-text-primary mb-12 mt-4"
+          className="text-display-md font-display font-black tracking-tighter text-text-primary mb-16 mt-4"
         >
           Where I&apos;ve worked.
         </h2>
       </Reveal>
 
-      {/* Timeline */}
-      <div className="relative">
-        {/* Vertical line — clip-path animates it drawing downward */}
-        <Reveal variant="clip-left" delay={200} duration={900}>
-          <div
-            className="absolute left-0 top-0 bottom-0 w-px bg-border-subtle hidden sm:block"
-            aria-hidden="true"
-          />
-        </Reveal>
+      {/* Timeline — spine runs centered, entries split left/right around it */}
+      <div ref={timelineRef} className="relative">
+        {/* Scroll-driven line + lagging circle marker — centered horizontally */}
+        <div className="hidden md:block">
+          <ScrollTimeline containerRef={timelineRef} />
+        </div>
 
-        <ol className="space-y-0">
+        <ol className="space-y-16 md:space-y-20">
           {experiences.map((exp, index) => (
             <Reveal
               key={exp.id}
               as="li"
-              variant="fade-left"
+              variant="fade-up"
               delay={220 + index * 120}
-              threshold={0.08}
-              className="relative sm:pl-10 pb-12 last:pb-0"
+              threshold={0.1}
+              className="relative"
             >
-              {/* Timeline dot */}
+              {/* Per-item marker on the centered spine */}
               <div
-                className="absolute left-0 top-1 -translate-x-[3px] w-[7px] h-[7px] rounded-full border border-border-default bg-surface-base hidden sm:block"
+                className="absolute left-1/2 top-1.5 -translate-x-1/2 w-[7px] h-[7px] rounded-full border border-border-default bg-surface-base hidden md:block z-10"
                 aria-hidden="true"
               />
 
-              <div className="group">
-                {/* Period */}
-                <span className="text-xs font-mono text-text-muted tracking-widest uppercase">
-                  {exp.period}
-                </span>
-
-                {/* Role & company */}
-                <div className="mt-2 mb-3">
-                  <h3 className="text-lg font-display font-bold text-text-primary tracking-tight">
-                    {exp.role}
-                    <span className="text-text-muted font-normal"> — </span>
-                    <span className="text-text-secondary">{exp.company}</span>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-12">
+                {/* ── Left column: period + company + role ── */}
+                <div className="md:text-left md:pr-2">
+                  <span className="text-xs md:text-xl font-mono text-text-muted tracking-widest uppercase">
+                    {exp.period}
+                  </span>
+                  <h3 className="mt-2 text-lg md:text-6xl font-display font-bold text-text-primary tracking-tight">
+                    {exp.company}
                   </h3>
+                  <h4 className="mt-1 text-sm md:text-xl font-mono text-text-secondary tracking-wide uppercase">
+                    {exp.role}
+                  </h4>
                 </div>
 
-                {/* Description */}
-                <p className="text-text-secondary text-sm leading-relaxed mb-4 max-w-2xl">
-                  {exp.description}
-                </p>
-
-                {/* Stack */}
-                <div className="flex flex-wrap gap-2">
-                  {exp.stack.map((tech) => (
-                    <TechBadge key={tech}>{tech}</TechBadge>
-                  ))}
+                {/* ── Right column: description + tech stack ── */}
+                <div className="md:pl-2 ">
+                  <p className="text-text-secondary text-lg leading-relaxed mb-4 max-w-md">
+                    {exp.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {exp.stack.map((tech) => (
+                      <TechBadge key={tech}>{tech}</TechBadge>
+                    ))}
+                  </div>
                 </div>
-
-                {/* Divider mobile */}
-                {index < experiences.length - 1 && (
-                  <div className="mt-12 sm:hidden h-px bg-border-subtle" aria-hidden="true" />
-                )}
               </div>
+
+              {/* Divider — mobile only, since spine is hidden below md */}
+              {index < experiences.length - 1 && (
+                <div
+                  className="mt-16 md:hidden h-px bg-border-subtle"
+                  aria-hidden="true"
+                />
+              )}
             </Reveal>
           ))}
         </ol>
