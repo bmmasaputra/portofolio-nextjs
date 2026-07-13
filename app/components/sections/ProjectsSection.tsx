@@ -91,25 +91,43 @@ function CardImage({
 // FOR Mobile & TABLET ONLY. Desktop uses a different layout.
 
 function CardContent({
+  index,
   title,
   description,
   tags,
   className,
 }: {
+  index?: number;
   title: string;
   description: string;
   tags: string[];
   className?: string;
 }) {
+  const featured = index === 0;
+
+  const containerClassName = cn(
+    "flex flex-col gap-2 p-4",
+    featured && "h-full",
+    className,
+  );
+
+  const descriptionClassName = cn(
+    "text-sm text-[var(--text-secondary)] leading-relaxed line-clamp-3",
+    featured ? "md:line-clamp-7 lg:line-clamp-9" : "flex-1",
+  );
+
+  const techBadgesClassName = cn(
+    "flex flex-wrap gap-1.5",
+    featured && "mt-auto",
+  );
+
   return (
-    <div className={cn("flex flex-col gap-2 p-4", className)}>
+    <div className={containerClassName}>
       <h3 className="text-base font-display font-bold text-[var(--text-primary)] tracking-tight leading-tight">
         {title}
       </h3>
-      <p className="text-sm text-[var(--text-secondary)] leading-relaxed flex-1">
-        {description}
-      </p>
-      <div className="flex flex-wrap gap-1.5">
+      <p className={descriptionClassName}>{description}</p>
+      <div className={techBadgesClassName}>
         {tags.map((tag) => (
           <TechBadge key={tag}>{tag}</TechBadge>
         ))}
@@ -192,7 +210,7 @@ function ProjectCard({
         <h3 className="text-lg font-display font-bold text-[var(--text-primary)] tracking-tight leading-tight">
           {project.title}
         </h3>
-        <p className="text-sm text-[var(--text-secondary)] leading-relaxed flex-1">
+        <p className="text-sm text-[var(--text-secondary)] line-clamp-3 leading-relaxed flex-1">
           {project.longDescription}
         </p>
         <div className="flex flex-wrap gap-1.5">
@@ -396,9 +414,12 @@ function TabletLayout() {
                 repo={project.repo}
                 link={project.link}
                 priority={i < 2}
-                className={cn(i === 0 ? "w-[55%] lg:w-[60%] flex-shrink-0" : "h-40")}
+                className={cn(
+                  i === 0 ? "w-[55%] lg:w-[60%] flex-shrink-0" : "h-40",
+                )}
               />
               <CardContent
+                index={i}
                 title={project.title}
                 description={
                   i === 0 ? project.longDescription : project.description
