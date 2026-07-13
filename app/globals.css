@@ -53,6 +53,7 @@
   --text-display-xl: clamp(3rem, 8vw, 7rem);
   --text-display-lg: clamp(2rem, 5vw, 4.5rem);
   --text-display-md: clamp(1.5rem, 3vw, 2.5rem);
+  --text-display-sm: clamp(1.25rem, 2vw, 2rem);
 
   /* Spacing */
 

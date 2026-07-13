@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
       // ...any other domains you already have
     ],
   },
+  allowedDevOrigins: ["10.146.212.14", "172.51.204.187"],
 };
 
 export default nextConfig;
