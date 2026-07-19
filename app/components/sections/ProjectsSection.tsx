@@ -43,7 +43,7 @@ function CardImage({
         alt={alt}
         fill
         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 520px"
-        className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+        className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
         priority={priority}
       />
       {/* Dark overlay */}
@@ -161,7 +161,7 @@ function ProjectCard({
           alt={project.title}
           fill
           sizes="520px"
-          className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+          className="object-cover object-centernpm transition-transform duration-700 group-hover:scale-105"
           priority={index < 2}
         />
         {/* Dark overlay for text legibility */}
@@ -562,19 +562,21 @@ export function ProjectsSection() {
       </h2>
 
       {/* Phone: < md */}
-      <div className="md:hidden">
-        <PhoneLayout />
-      </div>
+      <Reveal variant="fade-up" delay={280}>
+        <div className="md:hidden">
+          <PhoneLayout />
+        </div>
 
-      {/* Tablet: md → lg */}
-      <div className="hidden md:block lg:block xl:hidden">
-        <TabletLayout />
-      </div>
+        {/* Tablet: md → lg */}
+        <div className="hidden md:block lg:block xl:hidden">
+          <TabletLayout />
+        </div>
 
-      {/* Desktop: lg+ */}
-      <div className="hidden xl:block">
-        <DesktopLayout />
-      </div>
+        {/* Desktop: lg+ */}
+        <div className="hidden xl:block">
+          <DesktopLayout />
+        </div>
+      </Reveal>
     </section>
   );
 }

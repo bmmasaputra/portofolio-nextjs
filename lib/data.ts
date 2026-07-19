@@ -66,8 +66,7 @@ export const projects: Project[] = [
       "As part of my freelance work, I developed a user-friendly full-stack news portal featuring a comprehensive content management system designed to streamline editorial workflows. The platform includes dedicated user, editorial, and administration panels, enabling efficient content creation, review, publishing, and platform management. I implemented features that support modern digital publishing operations, including scheduled article publishing, integrated image editing, role-based content management, and a centralized advertisement management system, with a focus on balancing performance, usability, and maintainable code.",
     tags: ["Laravel", "Filament", "React", "Tailwind", "Inertia.js"],
     year: "2026",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80",
+    image: "/project1.png",
     link: "https://kalteng24.com",
     repo: "https://github.com/jrdrwn/kalteng24-inertia",
     featured: true,
@@ -81,8 +80,7 @@ export const projects: Project[] = [
       "Built as part of a hackathon where my team earned 3rd place, this project is a community-driven fire reporting and emergency response platform designed to connect the public with local fire departments. Citizens can report fire incidents in real time, enabling emergency responders to monitor incoming reports through a dedicated dashboard while automatically notifying users within a 100 km radius of the reported location. I was responsible for designing and developing the backend, including the database architecture, API development, deployment of the entire application, and deployment of our fire detection machine learning model.",
     tags: ["Hono.js", "FastAPI", "Next.js", "YOLO", "PostgreSQL"],
     year: "2025",
-    image:
-      "https://images.unsplash.com/photo-1555952517-2e8e729e0b44?w=1200&q=80",
+    image: "/project2.png",
     repo: "https://github.com/PyroSentinel",
     featured: true,
   },
@@ -95,8 +93,7 @@ export const projects: Project[] = [
       "Developed as the capstone project for the Bangkit Academy Program. FITS AI helps users make healthier dietary choices by scanning the ingredient list and nutrition table of packaged food and beverages using OCR model. The app analyzes nutritional content, assigns an A–D health rating, and generates personalized health insights through a transfer learning–based large language model while adapting recommendations to users food allergies and chronic conditions. \n\nFor my role at the team as a Cloud Engineer, I designed and developed the entire backend system, including the database architecture and REST APIs, deployed the backend on GCP Compute Engine, containerized and deployed our inhouse API-based LLM service with Docker, and implemented a GitHub Actions–based CI/CD pipeline to automate deployments. I also configured the cloud infrastructure with scalability in mind, leveraging Google Cloud services to support reliable and efficient application deployment.",
     tags: ["Kotlin", "Hapi.js", "FastAPI", "GCP", "Docker"],
     year: "2024",
-    image:
-      "https://images.unsplash.com/photo-1618788372246-79faff0c3742?w=1200&q=80",
+    image: "/project3.png",
     repo: "https://github.com/FITS-AI",
     featured: true,
   },
@@ -109,8 +106,7 @@ export const projects: Project[] = [
       "Conducted as my undergraduate thesis, this research investigates the impact of low-light image enhancement on the performance of road marking detection under nighttime conditions. I compared the traditional CLAHE algorithm against EnlightenGAN, a deep learning–based image enhancement model selected for its ability to improve image brightness while preserving color fidelity and minimizing noise. YOLOv8 was used as the object detection model to evaluate detection performance across multiple experimental runs with different random seeds. Although EnlightenGAN consistently outperformed CLAHE overall and achieved substantial improvements for several road marking classes, statistical analysis using a paired t-test showed that the overall performance difference was not statistically significant due to high variation across classes and training seeds. This study demonstrates the importance of combining empirical performance evaluation with statistical validation when assessing computer vision techniques.",
     tags: ["YOLO", "Python", "Roboflow"],
     year: "2026",
-    image:
-      "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=1200&q=80",
+    image: "/project4.png",
     repo: "https://github.com/alexrivera/deploy-cli",
     featured: true,
   },

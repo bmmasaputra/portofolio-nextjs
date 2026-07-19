@@ -353,7 +353,7 @@ export function ContactSection() {
             </a>
           </Reveal>
 
-          <Reveal variant="fade-up" delay={260}>
+          <Reveal variant="fade-up" delay={200}>
             <div className="mt-8 pt-4 pb-4 pl-4 pr-4 rounded-lg bg-surface-raised xl:w-120 border border-border-subtle flex flex-col xl:flex-row items-start sm:items-center justify-between gap-6">
               <p className="text-xs font-mono text-text-muted tracking-widest uppercase">
                 Or find me elsewhere
