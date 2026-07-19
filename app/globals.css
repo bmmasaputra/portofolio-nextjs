@@ -53,6 +53,7 @@
   --text-display-xl: clamp(3rem, 8vw, 7rem);
   --text-display-lg: clamp(2rem, 5vw, 4.5rem);
   --text-display-md: clamp(1.5rem, 3vw, 2.5rem);
+  --text-display-sm: clamp(1.25rem, 2vw, 2rem);
 
   /* Spacing */
 
@@ -64,6 +65,16 @@
   --animate-fade-up: fadeUp 0.6s ease forwards;
   --animate-fade-in: fadeIn 0.4s ease forwards;
   --animate-scanline: scanline 8s linear infinite;
+
+  --background-image-gradient-radial-dark:
+    radial-gradient(
+      ellipse 80% 50% at 50% -20%,
+      rgba(250, 250, 250, 0.5) 0%,
+      transparent 60%
+    );
+
+  --background-image-noise:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
 }
 
 /* ==================================================
@@ -110,6 +121,73 @@
 
   100% {
     transform: translateY(100vh);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes marquee-col-up-px {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(calc(-1 * var(--marquee-distance, 0px)));
+  }
+}
+
+@keyframes marquee-col-down-px {
+  from {
+    transform: translateY(calc(-1 * var(--marquee-distance, 0px)));
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes breathe {
+  0% {
+    opacity: 0.35;
+    transform: translateX(-50%) scale(1);
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: translateX(-50%) scale(1.5);
+  }
+
+  100% {
+    opacity: 0.35;
+    transform: translateX(-50%) scale(1);
   }
 }
 
@@ -210,7 +288,7 @@
 
     background: radial-gradient(
       ellipse 80% 50% at 50% -10%,
-      rgb(250 250 250 / 0.05) 0%,
+      rgba(113, 113, 122, 0.381) 0%,
       transparent 70%
     );
   }

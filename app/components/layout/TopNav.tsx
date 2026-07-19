@@ -63,7 +63,7 @@ export function TopNav() {
               href={`mailto:${siteConfig.email}`}
               className="text-sm font-mono px-4 py-2 border border-border-default text-text-secondary hover:border-border-strong hover:text-text-primary transition-all duration-200 rounded-sm"
             >
-              Hire me
+              Get in touch!
             </a>
           </nav>
 
@@ -114,7 +114,7 @@ export function TopNav() {
               onClick={() => setMobileOpen(false)}
               className="mt-4 text-sm font-mono px-8 py-3 border border-border-default text-text-secondary hover:border-border-strong hover:text-text-primary transition-all duration-200"
             >
-              Hire me
+              Get in touch!
             </a>
           </nav>
         </div>
