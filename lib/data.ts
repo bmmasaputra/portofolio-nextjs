@@ -107,7 +107,7 @@ export const projects: Project[] = [
     tags: ["YOLO", "Python", "Roboflow"],
     year: "2026",
     image: "/project4.png",
-    repo: "https://github.com/alexrivera/deploy-cli",
+    repo: "https://github.com/bmmasaputra/ROAD_MARK_EnlightenGAN_v_CLAHE_YOLOv8",
     featured: true,
   },
 ];
