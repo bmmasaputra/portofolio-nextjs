@@ -11,6 +11,17 @@ export interface Project {
   link?: string;
   repo?: string;
   featured: boolean;
+  category: string;
+  accent: string;
+  accentGlow: string;
+  motif: "editorial" | "radar" | "organic" | "technical";
+  role: string;
+  highlights: string[];
+  metrics?: {
+    label: string;
+    value: string;
+  }[];
+  cta?: string;
 }
 
 export interface Experience {
@@ -60,33 +71,119 @@ export const projects: Project[] = [
   {
     id: "kalteng24",
     title: "Kalteng24 News Portal",
+    category: "Freelance Project",
+    role: "Full Stack Developer",
+    accent: "#2563eb",
+    accentGlow: "rgba(37,99,235,.35)",
+    motif: "editorial",
     description:
       "User-friendly news portal with comprehensive content management system for editorial workflows",
     longDescription:
       "As part of my freelance work, I developed a user-friendly full-stack news portal featuring a comprehensive content management system designed to streamline editorial workflows. The platform includes dedicated user, editorial, and administration panels, enabling efficient content creation, review, publishing, and platform management. I implemented features that support modern digital publishing operations, including scheduled article publishing, integrated image editing, role-based content management, and a centralized advertisement management system, with a focus on balancing performance, usability, and maintainable code.",
+
+    highlights: [
+      "Role-based editorial workflow",
+      "Scheduled article publishing",
+      "Integrated image editor",
+      "Advertisement management",
+      "Responsive administration dashboard",
+    ],
+    metrics: [
+      {
+        label: "Type",
+        value: "Production Website",
+      },
+      {
+        label: "Panels",
+        value: "3",
+      },
+      {
+        label: "Architecture",
+        value: "Full Stack",
+      },
+    ],
     tags: ["Laravel", "Filament", "React", "Tailwind", "Inertia.js"],
     year: "2026",
     image: "/project1.png",
     link: "https://kalteng24.com",
     repo: "https://github.com/jrdrwn/kalteng24-inertia",
     featured: true,
+    cta: "Visit Website",
   },
   {
     id: "adaapi",
     title: "Adaapi",
+    category: "Hackathon",
+    role: "Backend & Cloud Engineer",
+    accent: "#f97316",
+    accentGlow: "rgba(249,115,22,.35)",
+    motif: "radar",
     description:
       "A community-driven fire reporting and emergency response platform with real-time public alerts and incident monitoring",
     longDescription:
       "Built as part of a hackathon where my team earned 3rd place, this project is a community-driven fire reporting and emergency response platform designed to connect the public with local fire departments. Citizens can report fire incidents in real time, enabling emergency responders to monitor incoming reports through a dedicated dashboard while automatically notifying users within a 100 km radius of the reported location. I was responsible for designing and developing the backend, including the database architecture, API development, deployment of the entire application, and deployment of our fire detection machine learning model.",
+    highlights: [
+      "Realtime community reporting",
+      "Automatic public alert system",
+      "100 km emergency notification",
+      "Backend API development",
+      "ML model deployment",
+    ],
+    metrics: [
+      {
+        label: "Achievement",
+        value: "3rd Place",
+      },
+      {
+        label: "Type",
+        value: "Hackathon",
+      },
+      {
+        label: "Focus",
+        value: "Emergency Response",
+      },
+    ],
     tags: ["Hono.js", "FastAPI", "Next.js", "YOLO", "PostgreSQL"],
     year: "2025",
     image: "/project2.png",
     repo: "https://github.com/PyroSentinel",
     featured: true,
+    cta: "View Source",
   },
   {
     id: "fits-ai",
     title: "FITS AI",
+    category: "Bangkit Capstone",
+
+    role: "Cloud Engineer",
+
+    accent: "#22c55e",
+
+    accentGlow: "rgba(34,197,94,.35)",
+
+    motif: "organic",
+    highlights: [
+      "OCR-powered nutrition scanner",
+      "Transfer learning LLM",
+      "Dockerized deployment",
+      "CI/CD with GitHub Actions",
+      "Scalable infrastructure on GCP",
+    ],
+
+    metrics: [
+      {
+        label: "Platform",
+        value: "Android",
+      },
+      {
+        label: "Cloud",
+        value: "Google Cloud",
+      },
+      {
+        label: "Role",
+        value: "Cloud Engineer",
+      },
+    ],
     description:
       "AI-powered nutrition tracker app that analyse packaged food and beverages health impact with OCR and our own LLM",
     longDescription:
@@ -96,14 +193,41 @@ export const projects: Project[] = [
     image: "/project3.png",
     repo: "https://github.com/FITS-AI",
     featured: true,
+    cta: "View Source",
   },
   {
     id: "road-mark-detection",
     title: "Research on Low-light Object Detection",
+    category: "Undergraduate Thesis",
+    role: "Researcher",
+    accent: "#8b5cf6",
+    accentGlow: "rgba(139,92,246,.35)",
+    motif: "technical",
     description:
       "A research project evaluating the impact of image enhancement model on object detection performance on YOLOv8",
     longDescription:
       "Conducted as my undergraduate thesis, this research investigates the impact of low-light image enhancement on the performance of road marking detection under nighttime conditions. I compared the traditional CLAHE algorithm against EnlightenGAN, a deep learning–based image enhancement model selected for its ability to improve image brightness while preserving color fidelity and minimizing noise. YOLOv8 was used as the object detection model to evaluate detection performance across multiple experimental runs with different random seeds. Although EnlightenGAN consistently outperformed CLAHE overall and achieved substantial improvements for several road marking classes, statistical analysis using a paired t-test showed that the overall performance difference was not statistically significant due to high variation across classes and training seeds. This study demonstrates the importance of combining empirical performance evaluation with statistical validation when assessing computer vision techniques.",
+    highlights: [
+      "YOLOv8 performance evaluation",
+      "CLAHE vs EnlightenGAN comparison",
+      "Statistical significance analysis",
+      "Multiple-seed experimentation",
+      "Nighttime road marking detection",
+    ],
+    metrics: [
+      {
+        label: "Model",
+        value: "YOLOv8",
+      },
+      {
+        label: "Dataset",
+        value: "TRMSDN",
+      },
+      {
+        label: "Focus",
+        value: "Computer Vision",
+      },
+    ],
     tags: ["YOLO", "Python", "Roboflow"],
     year: "2026",
     image: "/project4.png",
