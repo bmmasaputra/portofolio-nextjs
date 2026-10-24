@@ -19,7 +19,7 @@ function SkillIcon({ skill }: { skill: string }) {
   const Icon = skillIconMap[skill];
   return (
     <div className="group/icon flex flex-col items-center gap-2 px-2" title={skill}>
-      <span className="flex items-center justify-center w-9 h-9 text-text-primary group-hover/icon:text-text-primary transition-colors duration-300">
+      <span className="flex items-center justify-center w-9 h-9 text-icon-muted group-hover/icon:text-text-primary transition-colors duration-300">
         {Icon ? <Icon size={22} /> : <Code2 size={22} />}
       </span>
       <span className="text-[10px] font-mono text-text-secondary group-hover/icon:text-text-primary transition-colors duration-300 text-center leading-tight max-w-[72px]">
@@ -63,7 +63,7 @@ export function MarqueeColumn({
   return (
     <div className={cn("flex flex-col items-center group", className)}>
       {/* Category title — static, doesn't scroll */}
-      <span className="text-[10px] font-mono text-text-muted tracking-widest uppercase mb-4 text-center">
+      <span className="text-[10px] font-mono text-text-secondary tracking-widest uppercase mb-4 text-center">
         {category}
       </span>
 

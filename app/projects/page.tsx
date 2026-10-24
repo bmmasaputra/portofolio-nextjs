@@ -6,6 +6,7 @@ import { TechBadge } from "@/app/components/ui/TechBadge";
 import { SectionLabel } from "@/app/components/ui/SectionLabel";
 import { ExternalLink, ArrowLeft } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
+import { ThemeToggle } from "@/app/components/ui/ThemeToggle";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -15,14 +16,17 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <main className="min-h-screen px-6 py-24 max-w-6xl mx-auto">
-      {/* Back link */}
-      <Link
-        href="/#projects"
-        className="inline-flex items-center gap-2 text-sm font-mono text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors mb-12"
-      >
-        <ArrowLeft size={14} />
-        Back
-      </Link>
+      {/* Header controls: Back link & Theme toggle */}
+      <div className="flex items-center justify-between mb-12">
+        <Link
+          href="/#projects"
+          className="inline-flex items-center gap-2 text-sm font-mono text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors"
+        >
+          <ArrowLeft size={14} />
+          Back
+        </Link>
+        <ThemeToggle />
+      </div>
 
       {/* Header */}
       <div className="mb-16">
@@ -56,7 +60,7 @@ export default function ProjectsPage() {
                 className="absolute inset-0"
                 style={{
                   background:
-                    "linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 100%)",
+                    "var(--card-image-overlay)",
                 }}
               />
               {/* Featured badge */}

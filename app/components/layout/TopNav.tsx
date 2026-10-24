@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { navItems, siteConfig } from "@/lib/data";
+import { ThemeToggle } from "@/app/components/ui/ThemeToggle";
 
 export function TopNav() {
   const [scrolled, setScrolled] = useState(false);
@@ -41,7 +42,7 @@ export function TopNav() {
           {/* Wordmark */}
           <a
             href="#"
-            className="font-mono text-sm text-text-muted hover:text-text-primary transition-colors duration-200 tracking-tight"
+            className="font-mono text-sm text-text-accent hover:text-text-primary transition-colors duration-200 tracking-tight"
             aria-label="Home"
           >
             <span className="text-text-secondary">{"//"}</span>{" "}
@@ -54,7 +55,7 @@ export function TopNav() {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-sm text-text-muted hover:text-text-primary transition-colors duration-200 font-mono tracking-wide"
+                className="text-sm text-text-accent hover:text-text-primary transition-colors duration-200 font-mono tracking-wide"
               >
                 {item.label}
               </a>
@@ -65,17 +66,21 @@ export function TopNav() {
             >
               Get in touch!
             </a>
+            <ThemeToggle />
           </nav>
 
-          {/* Mobile hamburger */}
-          <button
-            onClick={() => setMobileOpen(true)}
-            className="md:hidden text-text-muted hover:text-text-primary transition-colors p-1"
-            aria-label="Open navigation menu"
-            aria-expanded={mobileOpen}
-          >
-            <Menu size={20} />
-          </button>
+          {/* Mobile controls */}
+          <div className="flex md:hidden items-center gap-3">
+            <ThemeToggle />
+            <button
+              onClick={() => setMobileOpen(true)}
+              className="text-text-muted hover:text-text-primary transition-colors p-1"
+              aria-label="Open navigation menu"
+              aria-expanded={mobileOpen}
+            >
+              <Menu size={20} />
+            </button>
+          </div>
         </div>
       </header>
 
@@ -87,7 +92,8 @@ export function TopNav() {
           aria-modal="true"
           aria-label="Navigation menu"
         >
-          <div className="flex justify-end p-6">
+          <div className="flex justify-between items-center p-6">
+            <ThemeToggle showLabel />
             <button
               onClick={() => setMobileOpen(false)}
               className="text-text-muted hover:text-text-primary transition-colors p-1"

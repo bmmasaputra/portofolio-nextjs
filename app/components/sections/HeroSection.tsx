@@ -13,12 +13,30 @@ function DotGrid() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouseRef = useRef({ x: -9999, y: -9999 });
   const rafRef = useRef<number>(0);
+  const dotRgbRef = useRef<string>("250, 250, 250");
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+
+    const updateDotColor = () => {
+      const val = getComputedStyle(document.documentElement)
+        .getPropertyValue("--canvas-dot-rgb")
+        .trim();
+      if (val) {
+        dotRgbRef.current = val;
+      }
+    };
+    updateDotColor();
+
+    const observer = new MutationObserver(updateDotColor);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class", "data-theme"],
+    });
+    window.addEventListener("themechange", updateDotColor);
 
     const DOT_SPACING = 28;
     const DOT_RADIUS = 1;
@@ -58,7 +76,7 @@ function DotGrid() {
           let opacity = 0.18;
 
           if (dist < INFLUENCE_RADIUS && dist > 0) {
-            const strength = (1 - dist / INFLUENCE_RADIUS);
+            const strength = 1 - dist / INFLUENCE_RADIUS;
             const angle = Math.atan2(dy, dx);
             // Push dots AWAY from cursor
             dotX += Math.cos(angle) * strength * MAX_DISPLACEMENT;
@@ -69,7 +87,7 @@ function DotGrid() {
 
           ctx.beginPath();
           ctx.arc(dotX, dotY, DOT_RADIUS, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(250, 250, 250, ${opacity})`;
+          ctx.fillStyle = `rgba(${dotRgbRef.current}, ${opacity})`;
           ctx.fill();
         }
       }
@@ -105,6 +123,8 @@ function DotGrid() {
     return () => {
       cancelAnimationFrame(rafRef.current);
       ro.disconnect();
+      observer.disconnect();
+      window.removeEventListener("themechange", updateDotColor);
       window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
@@ -148,7 +168,7 @@ function PhotoCard() {
       // Glare position
       const glareX = (x / rect.width) * 100;
       const glareY = (y / rect.height) * 100;
-      glare.style.background = `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(255,255,255,0.08) 0%, transparent 60%)`;
+      glare.style.background = `radial-gradient(circle at ${glareX}% ${glareY}%, var(--photo-glare) 0%, transparent 60%)`;
       glare.style.opacity = "1";
     },
     [reducedMotion]
@@ -273,9 +293,9 @@ function PhotoCard() {
           />
 
           {/* Bottom gradient + label */}
-          <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-surface-base/90 to-transparent" />
+          <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-black/90 to-transparent" />
           <div className="absolute bottom-3 left-3">
-            <p className="text-xs font-mono text-text-muted tracking-widest uppercase">
+            <p className="text-xs font-mono text-text-accent tracking-widest uppercase">
               {siteConfig.role}
             </p>
           </div>
@@ -318,7 +338,7 @@ export function HeroSection() {
                 className="w-1.5 h-1.5 rounded-full bg-text-secondary animate-pulse"
                 aria-hidden="true"
               />
-              <span className="text-xs font-mono text-text-muted tracking-widest uppercase">
+              <span className="text-xs font-mono text-text-accent tracking-widest uppercase">
                 Available for work
               </span>
             </div>
@@ -357,7 +377,7 @@ export function HeroSection() {
 
             {/* Social links */}
             <div className="flex items-center gap-6">
-              <span className="text-xs font-mono text-text-muted tracking-widest uppercase">
+              <span className="text-xs font-mono text-text-accent tracking-widest uppercase">
                 Find me on
               </span>
               <div className="h-px w-8 bg-border-subtle" aria-hidden="true" />
@@ -366,7 +386,7 @@ export function HeroSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub profile"
-                className="text-text-muted hover:text-text-primary transition-colors duration-200"
+                className="text-text-accent hover:text-text-primary transition-colors duration-200"
               >
                 <FaGithub size={18} />
               </a>
@@ -375,7 +395,7 @@ export function HeroSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn profile"
-                className="text-text-muted hover:text-text-primary transition-colors duration-200"
+                className="text-text-accent hover:text-text-primary transition-colors duration-200"
               >
                 <FaLinkedin size={18} />
               </a>
@@ -384,7 +404,7 @@ export function HeroSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Twitter profile"
-                className="text-text-muted hover:text-text-primary transition-colors duration-200"
+                className="text-text-accent hover:text-text-primary transition-colors duration-200"
               >
                 <FaTwitter size={18} />
               </a>

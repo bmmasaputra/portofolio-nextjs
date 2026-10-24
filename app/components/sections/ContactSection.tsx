@@ -61,7 +61,7 @@ function Field({
 const inputBase = [
   "w-full bg-transparent",
   "px-0 py-2.5",
-  "text-sm text-text-primary placeholder:text-text-muted",
+  "text-sm text-text-primary placeholder:text-text-accent",
   "focus:outline-none",
   "transition-colors duration-200",
 ].join(" ");
@@ -405,7 +405,7 @@ export function ContactSection() {
               className="absolute inset-x-0 top-0 h-px"
               style={{
                 background:
-                  "linear-gradient(90deg, transparent, var(--border-default), transparent)",
+                  "var(--card-glow-line)",
               }}
             />
 

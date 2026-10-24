@@ -65,13 +65,12 @@ export function AboutSection() {
         {/* ── Right: Skill columns — scrolls normally with the page ── */}
         <Reveal variant="fade" delay={150} threshold={0.05}>
           <div className="relative">
-            {/* Blue inner glow — rises from the bottom inside the card */}
+            {/* Inner glow — rises from the bottom inside the card */}
             <div
               aria-hidden="true"
               className="absolute inset-x-0 bottom-0 h-48 pointer-events-none animate-breathe"
               style={{
-                background:
-                  "radial-gradient(ellipse 80% 100% at 50% 100%, rgba(113, 113, 122, .6) 0%, transparent 70%)",
+                background: "var(--about-glow)",
                 filter: "blur(20px)",
               }}
             />

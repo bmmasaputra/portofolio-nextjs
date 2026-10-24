@@ -51,7 +51,7 @@ function CardImage({
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.55) 100%)",
+            "var(--card-image-overlay)",
         }}
       />
       {/* Year badge */}
@@ -169,7 +169,7 @@ function ProjectCard({
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 100%)",
+              "var(--card-image-overlay-alt)",
           }}
         />
 
@@ -186,7 +186,7 @@ function ProjectCard({
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${project.title} source code`}
-              className="w-8 h-8 flex items-center justify-center rounded-full backdrop-blur-sm bg-[var(--surface-base)]/40 border border-[var(--border-subtle)] text-text-primarysecondary hover:text-[var(--text-primary)] transition-colors"
+              className="w-8 h-8 flex items-center justify-center rounded-full backdrop-blur-sm bg-[var(--surface-base)]/40 border border-[var(--border-subtle)] text-text-primary hover:text-[var(--text-primary)] transition-colors"
             >
               <FaGithub size={14} />
             </a>
@@ -261,10 +261,7 @@ function ShowAllCard() {
         aria-hidden
         className="pointer-events-none absolute inset-0"
         style={{
-          backgroundImage: `
-            radial-gradient(circle, rgba(255,255,255,0.14) 1.2px, transparent 1.2px),
-            radial-gradient(circle, rgba(255,255,255,0.06) 0.7px, transparent 0.7px)
-          `,
+          backgroundImage: "var(--show-all-dots)",
           backgroundSize: "18px 18px, 9px 9px",
           backgroundPosition: "0 0, 4.5px 4.5px",
           WebkitMaskImage:
